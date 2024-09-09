@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 
-app = Flask(__name__) ## references this file 
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
@@ -11,7 +11,6 @@ class Todo(db.Model):
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.now(timezone.utc))
 
-    ## function that creates a string each time we make a new element
     def __repr__(self):
         return '<Task %r>' % self.id
 
